@@ -11,7 +11,11 @@ object Lab1 {
   def sqrtIter3 (guess : Double, x : Double) : Double = if (isGoodEnough3(guess, x)) improve3( guess, x )
   else sqrtIter3(improve3(guess, x), x)
 
-  def isGoodEnough3( guess : Double, x : Double ) : Boolean = Math.abs(improve3(guess, x) - guess) < 1e-100 // Проверка решения(корня) на точность
+  def sqrtIter3_relative (guess : Double, x : Double) : Double = if (isGoodEnough3_relative(guess, x)) improve3( guess, x )
+  else sqrtIter3(improve3(guess, x), x)
+
+  def isGoodEnough3( guess : Double, x : Double ) : Boolean = Math.abs(improve3(guess, x) - guess) < 1e-100 // Проверка решения(корня) на точность - абсолютная
+  def isGoodEnough3_relative( guess : Double, x : Double ) : Boolean = Math.abs(improve3(guess, x) - guess) / guess * 100 < 1e-100 //Проверка решения(корня) на точность - относительная
 
   def improve3 (guess : Double, x : Double) = (x/(guess * guess) + 2 * guess) / 3 //Вычисление более точного значения кубического корня по заданному уравнению
 
